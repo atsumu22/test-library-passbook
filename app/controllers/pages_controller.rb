@@ -3,4 +3,19 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def profile
+  end
+
+  def search
+  end
+
+  def barcode
+  end
+
+  def query
+  end
+
+  def logsedit
+  end
 end

@@ -1,0 +1,19 @@
+.btn-primary {
+  background-color: $button-primary;
+  color: $text-main;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-secondary {
+  background-color: $button-secondary;
+  color: $text-main;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

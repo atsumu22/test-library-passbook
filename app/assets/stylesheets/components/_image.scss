@@ -1,4 +1,10 @@
-.image-main {
-  width: 100%;
+.image-main-container {
+  width: 100vw;
   height: 100vh;
+}
+
+.image-main {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
 }

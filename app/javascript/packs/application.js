@@ -1,3 +1,4 @@
+//= require rails-ujs
 import "bootstrap"
 
 // Support component names relative to this directory:
