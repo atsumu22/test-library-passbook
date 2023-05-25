@@ -2,9 +2,28 @@
   <%= image_tag 'mainvisual', class: "image-main" %>
 </div>
 
-<% if !current_user %>
-  <div class="button-home">
-    <%= link_to "アカウント登録",  new_user_registration_path, class: "btn btn-primary", style: "width: 48%" %>
-    <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary", style: "width: 48%" %>
+<div style="height: 400px; background: red;">
+  <div style="height: 320px;">
+
+
+    <p>Placeholder</p>
+    <p>Placeholder</p>
+    <p>Placeholder</p>
+    <p>Placeholder</p>
+    <p>Placeholder</p>
+    <p>Placeholder</p>
+
   </div>
-<% end %>
+
+  <% if !current_user %>
+    <div class="button-home">
+      <%= link_to "アカウント登録",  new_user_registration_path, class: "btn btn-primary", style: "width: 48%" %>
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary", style: "width: 48%" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="footer">
+  <%= image_tag 'logo', class: "image-footer" %>
+  <p>&copy; 2023 Library Passbook</p>
+</div>

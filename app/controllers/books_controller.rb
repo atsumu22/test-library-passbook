@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   def index
     @books = policy_scope(Book)
-    render json: @books
+    # render json: @books
   end
 
   def create

@@ -6,6 +6,10 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
+  def profile?
+    true
+  end
+
   def edit?
     update?
   end

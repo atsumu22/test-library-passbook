@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :set_user, only: [:profile, :edit, :update, :destroy]
+
+  def profile
+    authorize @user
+  end
 
   def edit
     authorize @user

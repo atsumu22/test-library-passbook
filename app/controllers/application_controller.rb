@@ -15,6 +15,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:user_name])
   end
 
+  def after_sign_in_path_for(resource)
+    if current_user.books.length > 0
+      flash[:notice] = "ログインしました"
+      books_path  #　指定したいパスに変更
+    else
+      flash[:notice] = "新規登録完了しました"
+      search_path  #　指定したいパスに変更
+    end
+  end
+
   def set_csrf_token_header
     response.set_header('X-CSRF-Token', form_authenticity_token)
   end
