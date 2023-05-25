@@ -1,2 +1,4 @@
-<%= link_to 'キーワードで本を検索', query_path %>
-<%= link_to '本のバーコードをスキャンする', barcode_path %>
+<div class="form-container">
+  <%= link_to 'キーワードで本を検索', query_path, class: "btn btn-primary button-search form-button" %>
+  <%= link_to '本のバーコードをスキャンする', barcode_path, class: "btn btn-secondary button-search form-button" %>
+</div>
