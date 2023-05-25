@@ -12,14 +12,14 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 100%;
+  width: 100vw;
   height: 80px;
-  padding: 16px;
+  padding: 16px 8px;
 }
 
 .footer {
   height: 100px;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -29,5 +29,47 @@ body {
     font-weight: bold;
     margin-left: 16px;
     margin-bottom: 0px;
+  }
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.wrap {
+  overflow: hidden;
+}
+
+.content01 {
+  background: $background-main;
+  border-bottom-left-radius: 1000px 200px;
+  border-bottom-right-radius: 1000px 200px;
+  height: 100px;
+  margin-left: -100px;
+  margin-right: -100px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+.content03 {
+  background: $background-main;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  height: 100px;
+  margin-left: -100px;
+  margin-right: -100px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.text-area__content {
+  &:nth-child(1) {
+    margin: 50px 16px;
+  }
+  &:nth-child(2) {
+    margin: 0px 16px 100px 16px;
+  }
+  & h3 {
+    font-weight: 600;
+    margin-bottom: 16px;
   }
 }
