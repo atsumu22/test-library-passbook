@@ -1,4 +1,13 @@
-<div class="form-container">
-  <%= link_to 'キーワードで本を検索', query_path, class: "btn btn-primary button-search form-button" %>
-  <%= link_to '本のバーコードをスキャンする', barcode_path, class: "btn btn-secondary button-search form-button" %>
+<div class="container">
+  <div class="greeting">
+    <%= image_tag 'logo.png', class: "greeting__image" %>
+    <div class="greeting__message">
+      <h2>本を記録しよう</h2>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <%= link_to 'キーワードで本を検索', query_path, class: "btn btn-primary button-search form-button" %>
+    <%= link_to '本のバーコードをスキャンする', barcode_path, class: "btn btn-secondary button-search form-button" %>
+  </div>
 </div>

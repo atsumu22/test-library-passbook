@@ -1,35 +1,45 @@
-<div class="form-container">
-
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
-
-    <div class="form-inputs">
-      <%= f.input :user_name,
-                  label: "ユーザー名",
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "user_name" }%>
-      <%= f.input :email,
-                  label: "メールアドレス",
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
-                  label: "パスワード",
-                  required: true,
-                  hint: ("#{@minimum_password_length} 文字以上" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  label: "パスワード(確認用)",
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
+<div class="container">
+  <div class="greeting">
+    <%= image_tag 'logo.png', class: "greeting__image" %>
+    <div class="greeting__message">
+      <h2 class="mb-0">はじめまして</h2>
     </div>
+  </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "アカウント新規作成", class: "btn btn-primary form-button" %>
-    </div>
-  <% end %>
+  <div class="form-container">
 
-  <%= render "devise/shared/links" %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :user_name,
+                    label: "ユーザー名",
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "user_name" }%>
+        <%= f.input :email,
+                    label: "メールアドレス",
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" }%>
+        <%= f.input :password,
+                    label: "パスワード",
+                    required: true,
+                    hint: ("#{@minimum_password_length} 文字以上" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    label: "パスワード(確認用)",
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "アカウント新規作成", class: "btn btn-primary form-button" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+
+  </div>
 
 </div>
