@@ -75,7 +75,7 @@ const Scanner = (props) => {
     // If you do not specify a target,
     // QuaggaJS would look for an element that matches
     // the CSS selector #interactive.viewport
-    <>
+    <div className="form-container">
       <SScannerContainer>
         <SScanner id="interactive" className="viewport" />
       </SScannerContainer>
@@ -83,20 +83,20 @@ const Scanner = (props) => {
       <SNotation>
         987から始まる上段のバーコードを画面に合わせてスキャンしてください
       </SNotation>
-    </>
+    </div>
   );
 };
 
 const SScannerContainer = styled.div`
   position: relative;
-  width: 100vw;
-  height: 100px;
+  width: 100%;
+  height: 180px;
   overflow: hidden;
 `;
 
 const SScanner = styled.div`
-  width: 100vw;
-  height: 100px;
+  width: 100%;
+  height: 180px;
   & canvas,video {
     width: 100%;
     height: auto;

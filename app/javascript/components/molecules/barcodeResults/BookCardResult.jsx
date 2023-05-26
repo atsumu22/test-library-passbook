@@ -1,6 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import BookCard from '../../atoms/cards/BookCard';
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx, css } from "@emotion/react";
+import styled from "@emotion/styled";
 
 const BookCardResult = (props) => {
   const { result } = props;
@@ -21,7 +25,6 @@ const BookCardResult = (props) => {
           price: Math.round(res.data.Items[0].Item.itemPrice / 1.1)
         });
       };
-      // console.log(res.data.Items[0].Item);
     });
 
     const fetchingFromOpenBD = (result) => {
@@ -50,10 +53,21 @@ const BookCardResult = (props) => {
   } else {
     return (
       <div>
-        { book ?  <BookCard book={book} /> : <div className="bookcard"><h2>本情報が取得できませんでした。キーワード検索をご利用ください。</h2></div> }
+        { book ?  <BookCard book={book} /> : <SNotFound><h2>本情報が取得できませんでした。キーワード検索をご利用ください。</h2></SNotFound> }
       </div>
     );
   }
 };
+
+const SNotFound = styled.div`
+  background-color: #fff;
+  height: 200px;
+  border-radius: 15px;
+  padding: 10px 20px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default BookCardResult;

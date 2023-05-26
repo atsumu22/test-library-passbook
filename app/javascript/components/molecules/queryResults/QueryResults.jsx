@@ -4,9 +4,11 @@ import BookCard from '../../atoms/cards/BookCard';
 const QueryResults = (props) => {
   const { booksResults } = props;
 
+  console.log(booksResults);
+
   return (
     <div>
-      {booksResults ? booksResults.map(bookResult => <BookCard book={bookResult} key={bookResult}/>) : <h2>お探しの本は見つかりませんでした。別のキーワードで再度検索をお願いします。</h2> }
+      {booksResults ? booksResults.map((bookResult, index) => <BookCard book={bookResult} key={index}/>) : <h2>お探しの本は見つかりませんでした。別のキーワードで再度検索をお願いします。</h2> }
     </div>
   );
 };

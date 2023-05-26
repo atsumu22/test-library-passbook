@@ -43,11 +43,11 @@ const BookCard = (props) => {
             <p className="bookinfo__text__title">{book.title}</p>
             <p className="bookinfo__text__author">{book.author}</p>
             <p className="bookinfo__text__publisher">{book.publisher}</p>
-            <p className="bookinfo__text__publisher d-none">¥{book.price.toLocaleString()}</p>
+            <p className="bookinfo__text__publisher">¥{book.price.toLocaleString()}</p>
           </div>
           <div className="bookinfo__button">
-            <SButton onClick={onClickPostToLog} className={logClicked && "clicked"} disabled={logClicked && "disabled"}><i className="fa-regular fa-square-plus"></i></SButton>
-            <SButton onClick={onClickPostToBookmark}  className={BookmarkClicked && "clicked"} disabled={BookmarkClicked && "disabled"}><i className="fa-regular fa-bookmark"></i></SButton>
+            <SButton onClick={onClickPostToLog} className={logClicked && "clicked"} style={{ marginRight: "6px" }} disabled={logClicked && "disabled"}><p>+ 記帳</p></SButton>
+            <SButton onClick={onClickPostToBookmark}  className={BookmarkClicked && "clicked"} disabled={BookmarkClicked && "disabled"}><p><i className="fa-regular fa-bookmark"></i> 保存</p></SButton>
           </div>
         </div>
       </BrowserRouter>
@@ -57,27 +57,26 @@ const BookCard = (props) => {
 
 const SBookCard = styled.div`
   background-color: #fff;
-  height: 150px;
-  box-shadow: 5px 5px 5px #7f7f7f;
+  height: 200px;
   border-radius: 15px;
   padding: 10px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   margin: 10px;
   & img {
-    width: auto;
-    height: 100%;
-    background-color: gray;
-    margin-right: 10px;
+    width: 40%;
+    max-width: 40%;
+    max-height: 100%;
     object-fit: cover;
   }
   & .bookinfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    margin-left: 5%;
     height: 100%;
+    position: relative;
+    width: 55%;
+    max-width: 55%;
     &__text {
       &__title {
         font-weight: bold;
@@ -92,6 +91,9 @@ const SBookCard = styled.div`
       display: flex;
       flex-direction: raw;
       justify-content: end;
+      position: absolute;
+      bottom: 0;
+      right: 0;
     }
   }
 `;
@@ -99,19 +101,26 @@ const SBookCard = styled.div`
 const SPlaceHolder = styled.div`
   background-color: gray;
   opacity: 0.7;
-  width: 90px;
-  height: 150px;
+  height: 100%;
+  width: 40%;
+  margin-right: 10px;
 `;
 
 const SButton = styled.button`
-  background-color: white;
-  color: blue;
+  background-color: #fff;
+  color: #172c66;
   transition: all 0.3s;
-  border: none;
+  border: solid 0.5px #172c66;
   border-radius: 5px;
   &.clicked {
-    background-color: blue;
+    background-color: #172c66;
     color: white;
+  }
+  & > p {
+    margin: 0px;
+  }
+  & .margin-right {
+    margin-right: 5px;
   }
 `;
 

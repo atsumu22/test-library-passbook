@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import SearchBar from '../../atoms/searchbars/SearchBar';
-import PrimaryButton from '../../atoms/buttons/PrimaryButton';
-import SecondaryButton from '../../atoms/buttons/SecondaryButton';
 import axios from 'axios';
 import styled from "@emotion/styled";
 import QueryResults from '../queryResults/QueryResults';
+import SelectButton from '../../atoms/buttons/SelectButtons';
 
 const Query = () => {
   const [ titleSearch, setTitleSearch ] = useState(true);
@@ -12,6 +11,11 @@ const Query = () => {
   const [ queryContent, setQueryContent ] = useState("");
   const [ booksResults, setBooksResults ] = useState([]);
   const [ isLoaded, setIsLoaded ] = useState(false);
+  const [ selected, setSelected ] = useState(true);
+
+  const handleOnChange = () => {
+    setSelected(!selected);
+  };
 
   const onChangeText = (event) => setQueryContent(event.target.value);
 
@@ -92,32 +96,74 @@ const Query = () => {
     });
   };
 
-  console.log(booksResults);
-  console.log(isLoaded);
-
   return (
     <>
-      <SecondaryButton onClick={onClickTitleSet}>タイトル</SecondaryButton>
-      <SSwitchObject className={ titleSearch || "unactive"}>
-        <SearchBar placeholder={"本のタイトルで検索"} onChange={onChangeText} value={queryContent}></SearchBar>
-        <PrimaryButton onClick={onClickTitleSearch}>検索</PrimaryButton>
-      </SSwitchObject>
+    <SStickyContainer>
+      <SQueryContainer>
 
-      <SecondaryButton onClick={onClickAuthorSet}>著者</SecondaryButton>
-      <SSwitchObject className={ authorSearch || "unactive"}>
-        <SearchBar placeholder={"著者名で検索"} onChange={onChangeText} value={queryContent}></SearchBar>
-        <PrimaryButton onClick={onClickAuthorSearch}>検索</PrimaryButton>
-      </SSwitchObject>
+        <SSwitchObject>
+          <SelectButton value={selected ? "タイトル" : "著者"} onChange={handleOnChange} options={["タイトル", "著者"]} />
+          <SearchBar placeholder={selected ? "本のタイトルで検索" : "著者名で検索"} onChange={onChangeText} value={queryContent}></SearchBar>
+          <SRightButton onClick={selected? onClickTitleSearch : onClickAuthorSearch}>検索</SRightButton>
+        </SSwitchObject>
+
+      </SQueryContainer>
+
       {isLoaded && <QueryResults booksResults={booksResults}/>}
+
+    </SStickyContainer>
     </>
   );
 };
+
+const SStickyContainer = styled.div`
+  position: relative;
+`;
+
+const SQueryContainer = styled.div`
+  background-color: #fff;
+  margin: 16px 10px 0px 10px;
+  padding: 16px 10px 16px 10px;
+  border-radius: 10px;
+  position: sticky;
+  top: 16px;
+  left: 0;
+  z-index: 50;
+`;
 
 const SSwitchObject = styled.div`
   &.unactive {
     display: none;
   }
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  align-items: center;
 `;
+
+const SLeftButton = styled.div`
+  background-color: #8bd3dd;
+  width: 40%;
+  height: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SRightButton = styled.div`
+  width: 25%;
+  background-color: #f582ae;
+  height: 100%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+
 
 export default Query;
 

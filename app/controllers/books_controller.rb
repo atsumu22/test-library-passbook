@@ -15,7 +15,7 @@ class BooksController < ApplicationController
       @book.save
       render json: @book, status: :created
     elsif @duplicate_book && @duplicate_book.status == @book.status
-      render json: @book.errors, status: :unprocessable_entity
+      # render json: @book.errors, status: :unprocessable_entity
     elsif @duplicate_book && @duplicate_book.status != @book.status
       @duplicate_book.bookmark? ?  @duplicate_book.log! : @duplicate_book.bookmark!
     end
