@@ -17,3 +17,43 @@
   justify-content: center;
   align-items: center;
 }
+
+.btn-passbook-edit {
+  background-color: $button-primary;
+  color: $text-main;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-user-edit {
+  background-color: $button-secondary;
+  color: $text-main;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-logout {
+  background-color: $button-third;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-delete {
+  background-color: $button-secondary;
+  color: $text-main;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

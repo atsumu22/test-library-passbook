@@ -1,1 +1,5 @@
-<%= button_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+<div class="user-container">
+  <%= link_to '通帳の内容を編集する', logsedit_path, class: "btn btn-passbook-edit user-button" %>
+  <%= link_to 'ユーザー情報を編集する', edit_user_registration_path, class: "btn btn-user-edit user-button" %>
+  <%= button_to "ログアウトする", destroy_user_session_path, method: :delete, class: "btn btn-logout user-button" %>
+</div>
