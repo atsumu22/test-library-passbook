@@ -15,4 +15,8 @@ class PagesController < ApplicationController
 
   def logsedit
   end
+
+  def bookmarks
+    @books = Book.where(user: current_user, status: 1)
+  end
 end

@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:destroy]
 
   def index
-    @books = policy_scope(Book)
+    @books = policy_scope(Book).where(user: current_user, status: 0)
     # render json: @books
   end
 

@@ -1,5 +1,9 @@
 import React from 'react';
 import BookCard from '../../atoms/cards/BookCard';
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx, css } from "@emotion/react";
+import styled from "@emotion/styled";
 
 const QueryResults = (props) => {
   const { booksResults } = props;
@@ -7,11 +11,15 @@ const QueryResults = (props) => {
   console.log(booksResults);
 
   return (
-    <div>
+    <SContainer>
       {booksResults ? booksResults.map((bookResult, index) => <BookCard book={bookResult} key={index}/>) : <h2>お探しの本は見つかりませんでした。別のキーワードで再度検索をお願いします。</h2> }
-    </div>
+    </SContainer>
   );
 };
+
+const SContainer = styled.div`
+  margin-bottom: 100px;
+`;
 
 export default QueryResults;
 
