@@ -1,11 +1,12 @@
 <div class="container">
+
   <div class="greeting">
     <%= image_tag 'logo.png', class: "greeting__image" %>
     <div class="greeting__message">
-      <h2>バーコードを</h2>
-      <h2>読み取ろう</h2>
+      <h2><%= current_user.user_name %>さんの</h2>
+      <h2>ブックマークした本</h2>
     </div>
   </div>
 
-  <%= react_component("molecules/ScannerIndex") %>
+
 </div>

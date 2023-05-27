@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get '/query', to: 'pages#query'
   get '/barcode', to: 'pages#barcode'
   get '/logsedit', to: 'pages#logsedit'
+  get '/bookmarks', to: 'pages#bookmarks'
 end

@@ -25,6 +25,8 @@
     "react-pageflip": "^2.0.3",
     "react-router-dom": "^6.11.2",
     "react_ujs": "^2.7.1",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.4",
     "shakapacker": "6.6.0",
     "style-loader": "^3.3.3",
     "terser-webpack-plugin": "5",
