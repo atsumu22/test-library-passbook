@@ -8,9 +8,10 @@
 .cssbk{
   position:absolute;
   top: 35px;
-  left: 0;
-  width:100%;
+  left: 50%;
+  width:98%;
   padding-bottom:72%;
+  transform: translateX(-50%);
 }
 
 .cssbk input{
