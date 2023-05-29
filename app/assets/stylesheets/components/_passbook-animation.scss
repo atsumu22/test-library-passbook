@@ -1,33 +1,62 @@
 .passbook-container {
   position: relative;
-  padding: 10px 10px;
-  height: 450px;
-  overflow: hidden;
+  margin: 20px 10px;
+  height: 350px;
+  & .cssbk{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    & label {
+      display: block;
+    }
+    & input {
+      display:none;
+    }
+    & span {
+      transition:1.5s;
+      backface-visibility:hidden;
+      position:absolute;
+      width:100%;
+      height:50%;
+      background-color: #fff;
+      border: 0.5px solid #f3d2c1;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      padding: 10px 3px;
+      & > .column {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        & .title-and-date {
+          display: flex;
+          flex-direction: row;
+          justify-content: start;
+          & .date {
+            margin-right: 10px;
+          }
+        }
+        & p {
+          font-size: 0.8rem;
+          margin-bottom: 0;
+        }
+      }
+      &.front.top-page {
+        background-color: $button-primary;
+        padding: 0;
+        & .text-area {
+          background-color: #fff;
+          width: 100%;
+          padding: 3px 10px;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
 }
 
-.cssbk{
-  position:absolute;
-  top: 35px;
-  left: 50%;
-  width:98%;
-  padding-bottom:72%;
-  transform: translateX(-50%);
-}
-
-.cssbk input{
-  display:none;
-}
-
-.cssbk input~span{
-  transition:1.5s;
-  backface-visibility:hidden;
-  position:absolute;
-  width:100%;
-  height:60%;
-  background-color: #fff;
-  border: 0.5px solid #f3d2c1;
-  border-radius: 10px;
-}
 .cssbk input+span{
   top:50%;
   transform-origin:top;

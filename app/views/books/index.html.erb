@@ -6,23 +6,45 @@
     </div>
   </div>
 
+
   <div class="passbook-container">
     <div class="cssbk">
       <label>
         <input type="checkbox" />
-        <span style="z-index: 99;">表紙の文章</span>
-        <span class="dummy">１ページ目の文章</span>
+        <span class="front top-page" style="z-index: 1000;">
+          <div>
+            <div class="text-area">
+              <h5><%= current_user.user_name %>  様</h5>
+              <h6>作成日: <%= current_user.created_at.to_s[0...10] %></h6>
+            </div>
+          </div>
+        </span>
+        <span class="back">
+          <% @books_for_first_page.each do |book| %>
+            <div class="column">
+              <div class="title-and-date">
+                <p class="date"><%= book.updated_at.to_s[0...10] %></p>
+                <p class="title"><%= book.title %></p>
+              </div>
+              <p class="price"><%= number_with_delimiter(book.price) %></p>
+            </div>
+          <% end %>
+        </span>
       </label>
+
+      <% @second_books.each_with_index do |devided_books, index| %>
+        <%= react_component("molecules/passbooks/PassBookPage", {devidedBooks: devided_books, zIndex: index}) %>
+      <% end %>
+
+
+
+
       <label>
-        <input type="checkbox" />
-        <span style="z-index: 98;">２ページ目の文章</span>
-        <span class="dummy">３ページ目の文章</span>
+        <input type="checkbox" disabled/>
+        <span class="front" style="z-index: 98;"></span>
+        <span class="back"></span>
       </label>
-      <label>
-        <input type="checkbox" />
-        <span style="z-index: 97;">４ページ目の文章</span>
-        <span class="dummy">５ページ目の文章</span>
-      </label>
+
     </div>
   </div>
 

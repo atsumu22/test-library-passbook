@@ -2,7 +2,10 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:destroy]
 
   def index
-    @books = policy_scope(Book).where(user: current_user, status: 0)
+    @books = policy_scope(Book).where(user: current_user, status: 0).order(:updated_at)
+    @books_for_first_page = @books.map.with_index {|book, i| book if i <=7 }.compact
+    @books_after_second_page = @books - @books_for_first_page
+    @second_books = optimize_books_after_second_page(@books_after_second_page)
     # render json: @books
   end
 
@@ -28,6 +31,12 @@ class BooksController < ApplicationController
   end
 
   private
+
+  def optimize_books_after_second_page(books_array)
+    devided_books = books_array.each_slice(8).to_a
+    optimized_devided_books = devided_books.each_slice(2).to_a
+    return optimized_devided_books
+  end
 
   def set_book
     @book = Book.find(params[:id])
