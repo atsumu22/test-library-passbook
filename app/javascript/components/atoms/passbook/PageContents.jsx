@@ -8,7 +8,7 @@ const PageContents = (props) => {
     <div className="column">
       <div className="title-and-date">
         <p className="date">{book.updated_at.toString().substr(0,10)}</p>
-        <p className="title">{book.title}</p>
+        <p className="title">{book.title.length > 18 ? `${book.title.substr(0,18)}[..]` : book.title}</p>
       </div>
       <p className="price">{book.price}</p>
     </div>

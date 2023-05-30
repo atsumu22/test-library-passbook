@@ -24,7 +24,7 @@
             <div class="column">
               <div class="title-and-date">
                 <p class="date"><%= book.updated_at.to_s[0...10] %></p>
-                <p class="title"><%= book.title %></p>
+                <p class="title"><%= book.title[0...18] %></p>
               </div>
               <p class="price"><%= number_with_delimiter(book.price) %></p>
             </div>
@@ -36,15 +36,25 @@
         <%= react_component("molecules/passbooks/PassBookPage", {devidedBooks: devided_books, zIndex: index}) %>
       <% end %>
 
-
-
-
       <label>
         <input type="checkbox" disabled/>
         <span class="front" style="z-index: 98;"></span>
         <span class="back"></span>
       </label>
 
+    </div>
+  </div>
+
+  <div class="total-value">
+    <div class="total-value__container">
+      <% sum = [] %>
+      <% @books.each do |book| %>
+        <% sum << book.price %>
+      <% end %>
+      <h3>合計貯金額:</h3>
+      <h2>
+        ¥<%= number_with_delimiter(sum.sum) %>
+      </h2>
     </div>
   </div>
 
