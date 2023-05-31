@@ -1,0 +1,18 @@
+<div class="container">
+
+  <div class="greeting">
+    <%= image_tag 'logo.png', class: "greeting__image" %>
+    <div class="greeting__message">
+      <h2><%= current_user.user_name %>さんの通帳に記録されている本の一覧</h2>
+    </div>
+  </div>
+
+
+
+
+  <%= link_to :back, class: "btn btn-back" do %>
+    <p class="mb-0"><i class="fa-solid fa-chevron-left"></i> 前の画面に戻る</p>
+  <% end %>
+  <div class="bottom-placehodler"></div>
+
+</div>

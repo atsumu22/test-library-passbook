@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if current_user.books.length > 0
+    time_diff = Time.current.to_time - current_user.created_at.to_time
+    if time_diff > 5
       flash[:notice] = "ログインしました"
       books_path  #　指定したいパスに変更
     else

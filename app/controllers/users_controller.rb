@@ -22,8 +22,11 @@ class UsersController < ApplicationController
 
   def destroy
     authorize @user
-    @user.destroy
-    head :no_content
+    if @user.destroy
+      # head :no_content
+      flash[:alert] = "アカウントを削除しました。"
+      redirect_to root_path
+    end
   end
 
   private

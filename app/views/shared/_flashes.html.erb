@@ -1,13 +1,27 @@
 <!-- app/views/shared/_flashes.html.erb -->
 <% if notice %>
-  <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <%= notice %>
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+    <div class="background-shadow">
+    </div>
+    <div class="flash-container">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <div class="flash-container__items">
+        <%= notice %>
+        <button type="button" class="btn-secondary" data-bs-dismiss="alert" aria-label="Close">閉じる</button>
+      </div>
+    </div>
   </div>
 <% end %>
 <% if alert %>
-  <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <%= alert %>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <div class="background-shadow">
+    </div>
+    <div class="flash-container">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <div class="flash-container__items">
+        <%= alert %>
+        <button type="button" class="btn-primary" data-bs-dismiss="alert" aria-label="Close">閉じる</button>
+      </div>
+    </div>
   </div>
 <% end %>
