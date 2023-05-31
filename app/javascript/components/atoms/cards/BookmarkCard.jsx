@@ -7,18 +7,24 @@ import styled from "@emotion/styled";
 import axios from 'axios';
 import { csrfToken } from '@rails/ujs';
 // -> important
+import ModalContainer from '../modal/ModalContainer';
+import DeleteModalContainer from '../modal/DeleteModalContainer';
 
 
 const BookmarkCard = (props) => {
   const { bookData } = props;
   const [ logClicked, setLogClicked ] = useState(false);
   const [ DeleteClicked, setDeleteClicked ] = useState(false);
+  const [ isLoaded, setIsLoaded ] = useState(false);
+  const [ isCall, setIsCall ] = useState(false);
 
   const onClickPostToLog = () => {
     bookData.status = 0
     axios.defaults.headers.common['X-CSRF-Token'] = csrfToken();
     // -> important
-    axios.post('http://localhost:3000/books', bookData).then(() => {});
+    axios.post('http://localhost:3000/books', bookData).then((res) => {
+      isLoaded || setIsLoaded(true);
+    });
     // axios.post('http://localhost:3000/books', {
       // book: {bookData}}).then(() => {});
     // console.log(bookData);
@@ -26,31 +32,44 @@ const BookmarkCard = (props) => {
     logClicked || setLogClicked(true);
   }
 
-  const onClickDelete = () => {
+  const onClickModalCall = () => {
+    isCall || setIsCall(true);
+  };
+
+  const onClickDeleteBook = () => {
     axios.defaults.headers.common['X-CSRF-Token'] = csrfToken();
     axios.delete(`http://localhost:3000/books/${bookData.id}`).then(() => {});
     logClicked && setLogClicked(false);
     DeleteClicked || setDeleteClicked(true);
   }
 
+  const onClickDeleteModal = () => {
+    isLoaded && setIsLoaded(false);
+    isCall && setIsCall(false);
+  };
+
   return (
-    <SBookCard>
-      <BrowserRouter>
-        { bookData.image_url ? <img src={bookData.image_url} alt="book-image" /> : <SPlaceHolder /> }
-        <div className="bookinfo">
-          <div className="bookinfo__text">
-            <p className="bookinfo__text__title">{bookData.title}</p>
-            <p className="bookinfo__text__author">{bookData.author}</p>
-            <p className="bookinfo__text__publisher">{bookData.publisher}</p>
-            <p className="bookinfo__text__publisher">¥{bookData.price.toLocaleString()}</p>
+    <>
+      <SBookCard>
+        <BrowserRouter>
+          { bookData.image_url ? <img src={bookData.image_url} alt="book-image" /> : <SPlaceHolder /> }
+          <div className="bookinfo">
+            <div className="bookinfo__text">
+              <p className="bookinfo__text__title">{bookData.title}</p>
+              <p className="bookinfo__text__author">{bookData.author}</p>
+              <p className="bookinfo__text__publisher">{bookData.publisher}</p>
+              <p className="bookinfo__text__publisher">¥{bookData.price.toLocaleString()}</p>
+            </div>
+            <div className="bookinfo__button">
+              <SButton onClick={onClickPostToLog} className={logClicked && "clicked"} style={{ marginRight: "6px" }} disabled={logClicked && "disabled"}><p>+ 記帳</p></SButton>
+              <SButton onClick={onClickModalCall}  className={DeleteClicked && "clicked"} disabled={(logClicked || DeleteClicked) && "disabled"}><p>削除</p></SButton>
+            </div>
           </div>
-          <div className="bookinfo__button">
-            <SButton onClick={onClickPostToLog} className={logClicked && "clicked"} style={{ marginRight: "6px" }} disabled={logClicked && "disabled"}><p>+ 記帳</p></SButton>
-            <SButton onClick={onClickDelete}  className={DeleteClicked && "clicked"} disabled={DeleteClicked && "disabled"}><p>削除</p></SButton>
-          </div>
-        </div>
-      </BrowserRouter>
-    </SBookCard>
+        </BrowserRouter>
+      </SBookCard>
+      {isLoaded && <ModalContainer onClick={onClickDeleteModal}>{`『${bookData.title}』を通帳に記録しました`}</ModalContainer>}
+      {isCall && <DeleteModalContainer onClickCancel={onClickDeleteModal} onClickDeleteBook={onClickDeleteBook}>{`『${bookData.title}』を本当に削除しますか？`}</DeleteModalContainer>}
+    </>
   );
 };
 
