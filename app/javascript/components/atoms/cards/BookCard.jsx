@@ -25,10 +25,10 @@ const BookCard = (props) => {
     // -> important
     axios.post('http://localhost:3000/books', bookData)
       .then((res) => {
-        if (res.status === 200) {
-          isLoaded || setIsLoaded(true)
-        } else {
+        if (res.status === 202) {
           isUpdated || setIsUpdated(true)
+        } else {
+          isLoaded || setIsLoaded(true)
         }
       })
       .catch((res) => {
@@ -46,10 +46,10 @@ const BookCard = (props) => {
     axios.defaults.headers.common['X-CSRF-Token'] = csrfToken();
     axios.post('http://localhost:3000/books', bookData)
       .then((res) => {
-        if (res.status === 200) {
-          isLoaded || setIsLoaded(true)
-        } else {
+        if (res.status === 202) {
           isUpdated || setIsUpdated(true)
+        } else {
+          isLoaded || setIsLoaded(true)
         }
       })
       .catch((res) => {

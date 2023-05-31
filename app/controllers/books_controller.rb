@@ -27,9 +27,8 @@ class BooksController < ApplicationController
 
   def destroy
     authorize @book
-    if @book.destroy
-      # redirect_to controller: :pages, action: :bookmark
-    end
+    @book.destroy
+    redirect_to root_path, status: :see_other
     # head :no_content
   end
 

@@ -2,7 +2,6 @@ import React from 'react';
 
 const PageContents = (props) => {
   const { book } = props;
-  console.log(book);
 
   return (
     <div className="column">

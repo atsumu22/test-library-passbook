@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
       flash[:notice] = "ログインしました"
       books_path  #　指定したいパスに変更
     else
-      flash[:notice] = "新規登録完了しました"
+      flash[:notice] = "ユーザー登録が完了しました。さっそく、本の記録をはじめよう！"
       search_path  #　指定したいパスに変更
     end
   end

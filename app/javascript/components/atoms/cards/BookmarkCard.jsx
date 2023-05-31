@@ -17,6 +17,7 @@ const BookmarkCard = (props) => {
   const [ DeleteClicked, setDeleteClicked ] = useState(false);
   const [ isLoaded, setIsLoaded ] = useState(false);
   const [ isCall, setIsCall ] = useState(false);
+  const [ isDeleted, setIsDeleted ] = useState(false);
 
   const onClickPostToLog = () => {
     bookData.status = 0
@@ -41,6 +42,7 @@ const BookmarkCard = (props) => {
     axios.delete(`http://localhost:3000/books/${bookData.id}`).then(() => {});
     logClicked && setLogClicked(false);
     DeleteClicked || setDeleteClicked(true);
+    isCall && setIsCall(false);
   }
 
   const onClickDeleteModal = () => {
@@ -51,6 +53,7 @@ const BookmarkCard = (props) => {
   return (
     <>
       <SBookCard>
+        {DeleteClicked && <SShadow><h2>削除されました</h2></SShadow>}
         <BrowserRouter>
           { bookData.image_url ? <img src={bookData.image_url} alt="book-image" /> : <SPlaceHolder /> }
           <div className="bookinfo">
@@ -83,6 +86,7 @@ const SBookCard = styled.div`
   justify-content: space-between;
   align-items: start;
   margin: 10px;
+  position: relative;
   & img {
     width: 40%;
     max-width: 40%;
@@ -114,6 +118,22 @@ const SBookCard = styled.div`
       right: 0;
     }
   }
+`;
+
+const SShadow = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 10;
+  border-radius: 15px;
+  opacity: 0.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
 `;
 
 const SPlaceHolder = styled.div`

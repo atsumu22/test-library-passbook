@@ -6,7 +6,7 @@ const BackPage = (props) => {
 
   return (
     <span>
-      {books.map((book) => <PageContents book={book} />)}
+      {books && books.map((book) => <PageContents book={book} key={book.id}/>)}
     </span>
   );
 };

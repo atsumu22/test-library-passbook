@@ -7,7 +7,7 @@ const PassBookPage = (props) => {
 
   return (
     <label>
-      <input type="checkbox"/>
+      {devidedBooks.length === 2 ? <input type="checkbox" /> : <input type="checkbox" disabled/>}
       <FrontPage books={devidedBooks[0]} zIndex={zIndex}/>
       <BackPage books={devidedBooks[1]}/>
     </label>

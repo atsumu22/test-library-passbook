@@ -3,12 +3,12 @@ import PageContents from './PageContents';
 
 const FrontPage = (props) => {
   const { books, zIndex } = props;
-  console.log(books);
-  console.log(999-zIndex);
+  // console.log(books);
+  // console.log(999-zIndex);
 
   return (
     <span style={{ zIndex: `${999 - zIndex.toString()}`}}>
-      {books.map((book) => <PageContents book={book} />)}
+      {books.map((book) => <PageContents book={book} key={book.id}/>)}
     </span>
   );
 };
