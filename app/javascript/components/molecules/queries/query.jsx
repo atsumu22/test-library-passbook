@@ -29,7 +29,9 @@ const Query = () => {
     authorSearch || setAuthorSearch(true);
   }
 
-  const onClickTitleSearch = () => {
+  const onClickTitleSearch = (event) => {
+    event.preventDefault();
+
     // console.log("title");
     const queryValue = queryContent.replace(/( |　)+/g, "+");
     // console.log(queryValue);
@@ -63,7 +65,8 @@ const Query = () => {
   };
   // isLoaded===trueのとき、mapを実行するコンポーネントに対して、props(booksResults)を渡す。
 
-  const onClickAuthorSearch = () => {
+  const onClickAuthorSearch = (event) => {
+    event.preventDefault();
     // console.log("author");
     const queryValue = queryContent.replace(/( |　)+/g, "+");
     // console.log(queryValue);

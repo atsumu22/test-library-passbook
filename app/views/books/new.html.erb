@@ -1,0 +1,26 @@
+<div class="container">
+ <div class="greeting">
+    <%= image_tag 'logo.png', class: "greeting__image" %>
+    <div class="greeting__message">
+      <h2 class="mb-0">すみません…。</h2>
+      <h2 class="mb-0">下の入力フォームから本の情報を登録してください。</h2>
+    </div>
+  </div>
+
+  <div class="form-container">
+     <%= simple_form_for @book do |f| %>
+      <%= f.input :title, autofocus: true, label: "本のタイトル", error: "本のタイトルは必ず入力が必要です"  %>
+      <%= f.input :author, autofocus: true, label: "著者名", value: "不明", hint: "著者名が不明の場合は空欄のままで構いません"  %>
+      <%= f.hidden_field :publisher, value: ""  %>
+      <%= f.hidden_field :image_url, value: "" %>
+      <%= f.input :price, autofocus: true, label: "定価", as: :integer, error: "定価は1以上の数字を入力してください", hint: "半角数字のみで入力してください。コンマは不要です。"  %>
+      <%= f.hidden_field :status, value: "log" %>
+      <%= f.button :submit, "上記の内容で本を記録する",class: "btn btn-primary form-button" %>
+    <% end %>
+
+  </div>
+
+  <%= link_to :back, class: "btn btn-back" do %>
+   <p class="mb-0"><i class="fa-solid fa-chevron-left"></i> 前の画面に戻る</p>
+  <% end %>
+</div>

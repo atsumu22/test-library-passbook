@@ -14,6 +14,14 @@ class BookPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def failed?
+    true
+  end
+
+  def new?
+    create?
+  end
+
   def create?
     true
   end

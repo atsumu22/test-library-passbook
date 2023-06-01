@@ -18,6 +18,16 @@
   align-items: center;
 }
 
+.btn-third {
+  background-color: $button-third;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .btn-passbook-edit {
   background-color: $button-primary;
   color: $text-main;

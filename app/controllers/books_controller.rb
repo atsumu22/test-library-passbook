@@ -9,6 +9,17 @@ class BooksController < ApplicationController
     # render json: @books
   end
 
+  def new
+    @book = Book.new
+    authorize @book
+  end
+
+  def failed
+    @book = Book.new(book_params)
+    @book.user = current_user
+    authorize @book
+  end
+
   def create
     @book = Book.new(book_params)
     @book.user = current_user
@@ -16,14 +27,20 @@ class BooksController < ApplicationController
     authorize @book
     if @duplicate_book.nil?
       @book.save
-      render json: @book, status: :created
+      if @book.save
+      # render json: @book, status: :created
+        redirect_to books_path
+      else
+        render :new, status: :unprocessable_entity
+      end
     elsif @duplicate_book && @duplicate_book.status == @book.status
-      render json: @book.errors, status: :unprocessable_entity
+      render :failed, status: :unprocessable_entity
     elsif @duplicate_book && @duplicate_book.status != @book.status
       @duplicate_book.bookmark? ?  @duplicate_book.log! : @duplicate_book.bookmark!
       render json: @book, status: 202
     end
   end
+
 
   def destroy
     authorize @book
