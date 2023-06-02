@@ -1,5 +1,5 @@
 //= require rails-ujs
-import "bootstrap"
+import "bootstrap/scss/bootstrap.scss"
 import 'semantic-ui-css/semantic.min.css'
 
 // Support component names relative to this directory:

@@ -7,7 +7,14 @@
     </div>
   </div>
 
-
+  <% @books.each do |book| %>
+    <div class="d-flex row">
+      <p><%= book.title %></p>
+      <p><%= book.author %></p>
+      <p><%= book.price %></p>
+    </div>
+  <% end %>
+  <%= will_paginate @books  %>
 
 
   <%= link_to :back, class: "btn btn-back" do %>
